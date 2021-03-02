@@ -15,17 +15,7 @@
   \*********************/
 /***/ ((module) => {
 
-eval("function Game() {\n  this.asteroids = [];\n  this.bullets = [];\n  this.ships = [];\n\n  this.addAsteroids();\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
-
-/***/ }),
-
-/***/ "./src/game_view.js":
-/*!**************************!*\
-  !*** ./src/game_view.js ***!
-  \**************************/
-/***/ ((module) => {
-
-eval("function GameView(game, ctx) {\n  this.ctx = ctx;\n  this.game = game;\n}\n\nmodule.exports = GameView;\n\n//# sourceURL=webpack:///./src/game_view.js?");
+eval("function Game() {\n\n}\n\nGame.BG_COLOR = \"#000000\";\nGame.DIM_X = 1200;\nGame.DIM_Y = 700;\n\nGame.prototype.draw = function draw(ctx) {\n  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);\n  ctx.fillStyle = Game.BG_COLOR;\n  ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);\n\n  this.allObjects().forEach(function (object) {\n    object.draw(ctx);\n  });\n};\n\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
 
 /***/ }),
 
@@ -35,7 +25,7 @@ eval("function GameView(game, ctx) {\n  this.ctx = ctx;\n  this.game = game;\n}\
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\nconst GameView = __webpack_require__(/*! ./game_view */ \"./src/game_view.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const canvasEl = document.getElementsByTagName(\"canvas\")[0];\n  canvasEl.width = Game.DIM_X;\n  canvasEl.height = Game.DIM_Y;\n\n  const ctx = canvasEl.getContext(\"2d\");\n  const game = new Game();\n  new GameView(game, ctx).start();\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n// const GameView = require(\"./game_view\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const canvasEl = document.getElementsByTagName(\"canvas\")[0];\n  canvasEl.width = Game.DIM_X;\n  canvasEl.height = Game.DIM_Y;\n\n  const ctx = canvasEl.getContext(\"2d\");\n  ctx.fillStyle = \"black\";\n  ctx.fillRect(0, 0, 1500, 950);\n  // const game = new Game();\n  // new GameView(game, ctx).start();\n});\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

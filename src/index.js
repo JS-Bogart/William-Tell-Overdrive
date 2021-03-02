@@ -1,5 +1,5 @@
 const Game = require("./game");
-const GameView = require("./game_view");
+// const GameView = require("./game_view");
 
 document.addEventListener("DOMContentLoaded", function () {
   const canvasEl = document.getElementsByTagName("canvas")[0];
@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
   canvasEl.height = Game.DIM_Y;
 
   const ctx = canvasEl.getContext("2d");
-  const game = new Game();
-  new GameView(game, ctx).start();
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, 1500, 950);
+  // const game = new Game();
+  // new GameView(game, ctx).start();
 });
+
