@@ -16,16 +16,11 @@ class Game {
     ctx.fillStyle = Game.BG_COLOR;
     ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
     
-    this.drawPlanets(ctx);
-    // const planet1 = new Image();
-    // planet1.src = "assets/images/planet1.png";
-    // planet1.onload = () => {
-    //   ctx.drawImage(planet1, 500, 500, 200, 200)
-    // }
+    this.drawPlanets();
   };
 
   addPlanet() {
-    this.planets.push(new Planet);
+    this.planets.push(new Planet(this.ctx));
     console.log(this.planets);
   }
 
@@ -33,18 +28,14 @@ class Game {
     this.planets.shift();
     console.log(this.planets);
   }
-  drawPlanets(ctx) {
+
+  drawPlanets() {
     this.planets.forEach(function(planet) {
-      planet.draw(ctx);
+      planet.draw();
     });
   }
 
-  generatePlanets(ctx) {
-    // const planet1 = new Image();
-    // planet1.src = "assets/images/planet1.png";
-    // planet1.onload = () => {
-    //   ctx.drawImage(planet1, 500, 500, 200, 200)
-    // }
+  generatePlanets() {
 
     let addPlanet = this.addPlanet.bind(this);
     let removePlanet = this.removePlanet.bind(this);
@@ -54,9 +45,13 @@ class Game {
 
       setTimeout(function () {
         removePlanet();
-      }, 1000)
-    }, 2 * 1000);
+      }, 4000)
+    }, 5 * 1000);
   };
+
+  step() {
+    
+  }
 
 }
 

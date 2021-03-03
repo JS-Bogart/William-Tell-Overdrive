@@ -1,11 +1,15 @@
-class Planet {
+const planet1 = new Image();
+planet1.src = "assets/images/planet1.png";
 
-  draw(ctx) {
-    const planet1 = new Image();
-    planet1.src = "assets/images/planet1.png";
-    planet1.onload = () => {
-      ctx.drawImage(planet1, 500, 500, 200, 200)
-    }
+class Planet {
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.planet1 = planet1;
+    this.pos = [500, 50];
+  }
+
+  draw() {
+    this.ctx.drawImage(this.planet1, 500, 50, 200, 200)
   }
 }
 
