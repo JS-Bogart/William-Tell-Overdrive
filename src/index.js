@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
   canvasEl.height = Game.DIM_Y;
 
   const ctx = canvasEl.getContext("2d");
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, 1500, 950);
-  // const game = new Game();
+
+  const game = new Game();
+  game.draw(ctx);
+
   // new GameView(game, ctx).start();
 });
 
