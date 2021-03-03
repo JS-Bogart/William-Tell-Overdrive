@@ -20,7 +20,11 @@ class Game {
   };
 
   addPlanet() {
-    this.planets.push(new Planet(this.ctx));
+    // const planets = ["planet1"];
+    const positions = ["pos1", "pos2", "pos3", "pos4", "pos5"];
+    // const planet = planets[Math.floor(Math.random() * Math.floor(1))]
+    const pos = positions[Math.floor(Math.random() * Math.floor(5))];
+    this.planets.push(new Planet(this.ctx, "planet1", pos));
     console.log(this.planets);
   }
 
@@ -30,7 +34,7 @@ class Game {
   }
 
   drawPlanets() {
-    this.planets.forEach(function(planet) {
+    this.planets.forEach(planet => {
       planet.draw();
     });
   }
@@ -46,11 +50,15 @@ class Game {
       setTimeout(function () {
         removePlanet();
       }, 4000)
-    }, 5 * 1000);
+    }, 1 * 1000);
   };
 
   step() {
-    
+    this.planets.forEach(planet => {
+      if (planet) {
+        planet.move();
+      }
+    });
   }
 
 }
