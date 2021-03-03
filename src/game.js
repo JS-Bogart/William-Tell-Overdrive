@@ -1,4 +1,5 @@
 import Planet from './planet';
+import Asteroid from './asteroid';
 
 class Game {
   constructor(ctx) {
@@ -11,14 +12,7 @@ class Game {
     this.dim_y = 700;
   }
 
-
-  draw(ctx) {
-    ctx.clearRect(0, 0, this.dim_x, this.dim_y);
-    ctx.fillStyle = this.bg_color;
-    ctx.fillRect(0, 0, this.dim_x, this.dim_y);
-    
-    this.drawPlanets();
-  };
+  // Planets
 
   addPlanet() {
     const planets = [
@@ -57,7 +51,7 @@ class Game {
 
     let addPlanet = this.addPlanet.bind(this);
     let removePlanet = this.removePlanet.bind(this);
-    setInterval(function () { 
+    setInterval(function () {
 
       addPlanet();
 
@@ -67,10 +61,69 @@ class Game {
     }, 2 * 1000);
   };
 
+  // Asteroids
+
+  addAsteroid() {
+    const asteroids = [
+      "asteroid1",
+      "asteroid2",
+      "asteroid3",
+      "asteroid4",
+      "asteroid5",
+      "asteroid6",
+      "asteroid7"
+    ];
+    const positions = ["pos1", "pos2", "pos3", "pos4"];
+    const asteroid = asteroids[Math.floor(Math.random() * Math.floor(7))]
+    const pos = positions[Math.floor(Math.random() * Math.floor(5))];
+    this.asteroids.push(new Asteroid(this.ctx, asteroid, pos));
+    console.log(this.asteroids);
+  }
+
+  removeAsteroid() {
+    this.asteroids.shift();
+    console.log(this.asteroids);
+  }
+
+  drawAsteroids() {
+    this.asteroids.forEach(asteroid => {
+      asteroid.draw();
+    });
+  }
+
+  generateAsteroids() {
+
+    let addAsteroid = this.addAsteroid.bind(this);
+    let removeAsteroid = this.removeAsteroid.bind(this);
+    setInterval(function () { 
+
+      addAsteroid();
+
+      setTimeout(function () {
+        removeAsteroid();
+      }, 4000)
+    }, 1 * 1000);
+  };
+
+  draw(ctx) {
+    ctx.clearRect(0, 0, this.dim_x, this.dim_y);
+    ctx.fillStyle = this.bg_color;
+    ctx.fillRect(0, 0, this.dim_x, this.dim_y);
+
+    this.drawPlanets();
+    this.drawAsteroids();
+  };
+
   step() {
     this.planets.forEach(planet => {
       if (planet) {
         planet.move();
+      }
+    });
+
+    this.asteroids.forEach(asteroid => {
+      if (asteroid) {
+        asteroid.move();
       }
     });
   }
