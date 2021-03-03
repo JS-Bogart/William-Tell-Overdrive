@@ -2,29 +2,43 @@ import Planet from './planet';
 
 class Game {
   constructor(ctx) {
-    this.planets = [];
     this.ctx = ctx;
+    this.planets = [];
+    this.asteroids = [];
 
-    Game.BG_COLOR = "#000000";
-    Game.DIM_X = 1200;
-    Game.DIM_Y = 700;
+    this.bg_color = "#000000";
+    this.dim_x = 1200;
+    this.dim_y = 700;
   }
 
 
   draw(ctx) {
-    ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    ctx.fillStyle = Game.BG_COLOR;
-    ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    ctx.clearRect(0, 0, this.dim_x, this.dim_y);
+    ctx.fillStyle = this.bg_color;
+    ctx.fillRect(0, 0, this.dim_x, this.dim_y);
     
     this.drawPlanets();
   };
 
   addPlanet() {
-    // const planets = ["planet1"];
+    const planets = [
+      "planet1", 
+      "planet2", 
+      "planet3",
+      "planet4",
+      "planet5",
+      "planet6",
+      "planet7",
+      "planet8",
+      "planet9",
+      "planet10",
+      "planet11",
+      "planet12"
+    ];
     const positions = ["pos1", "pos2", "pos3", "pos4", "pos5"];
-    // const planet = planets[Math.floor(Math.random() * Math.floor(1))]
+    const planet = planets[Math.floor(Math.random() * Math.floor(12))]
     const pos = positions[Math.floor(Math.random() * Math.floor(5))];
-    this.planets.push(new Planet(this.ctx, "planet1", pos));
+    this.planets.push(new Planet(this.ctx, planet, pos));
     console.log(this.planets);
   }
 
@@ -50,7 +64,7 @@ class Game {
       setTimeout(function () {
         removePlanet();
       }, 4000)
-    }, 1 * 1000);
+    }, 2 * 1000);
   };
 
   step() {
