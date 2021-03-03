@@ -1,0 +1,21 @@
+{
+  "name": "WTO",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JS-Bogart/William-Tell-Overdrive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JS-Bogart/William-Tell-Overdrive/issues"
+  },
+  "homepage": "https://github.com/JS-Bogart/William-Tell-Overdrive#readme"
+}
