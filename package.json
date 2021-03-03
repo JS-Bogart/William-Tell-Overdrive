@@ -12,10 +12,14 @@
     "url": "git+https://github.com/JS-Bogart/William-Tell-Overdrive.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jeffrey Bogart",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JS-Bogart/William-Tell-Overdrive/issues"
   },
-  "homepage": "https://github.com/JS-Bogart/William-Tell-Overdrive#readme"
+  "homepage": "https://github.com/JS-Bogart/William-Tell-Overdrive#readme",
+  "dependencies": {
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0"
+  }
 }
