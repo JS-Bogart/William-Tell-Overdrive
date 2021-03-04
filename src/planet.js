@@ -69,6 +69,7 @@ class Planet {
       0,
       2 * Math.PI
     );
+    this.ctx.strokeStyle = "transparent";
     this.ctx.stroke();
     this.ctx.fillStyle = grd;
     this.ctx.fill();

@@ -1,6 +1,9 @@
 import Planet from './planet';
 import Asteroid from './asteroid';
 
+const bgGame = new Image();
+bgGame.src = "assets/images/backgrounds/game_bg.jpg";
+
 class Game {
   constructor(ctx) {
     this.ctx = ctx;
@@ -10,6 +13,8 @@ class Game {
     this.bg_color = "#000000";
     this.dim_x = 1200;
     this.dim_y = 700;
+
+    this.bgGame = bgGame;
   }
 
   // Planets
@@ -109,6 +114,7 @@ class Game {
     ctx.clearRect(0, 0, this.dim_x, this.dim_y);
     ctx.fillStyle = this.bg_color;
     ctx.fillRect(0, 0, this.dim_x, this.dim_y);
+    ctx.drawImage(this.bgGame, 0, 0, this.dim_x, this.dim_y);
 
     this.drawPlanets();
     this.drawAsteroids();
