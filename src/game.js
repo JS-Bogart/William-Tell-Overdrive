@@ -1,5 +1,6 @@
 import Planet from './planet';
 import Asteroid from './asteroid';
+import Bolt from './bolt';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
@@ -9,6 +10,7 @@ class Game {
     this.ctx = ctx;
     this.planets = [];
     this.asteroids = [];
+    this.bolt = new Bolt(ctx);
 
     this.bg_color = "#000000";
     this.dim_x = 1200;
@@ -110,6 +112,8 @@ class Game {
     }, 1 * 1000);
   };
 
+  // Animation
+
   draw(ctx) {
     ctx.clearRect(0, 0, this.dim_x, this.dim_y);
     ctx.fillStyle = this.bg_color;
@@ -118,6 +122,7 @@ class Game {
 
     this.drawPlanets();
     this.drawAsteroids();
+    this.bolt.draw();
   };
 
   step() {

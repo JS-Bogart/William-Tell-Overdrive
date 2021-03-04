@@ -35,6 +35,31 @@ class Asteroid {
   }
 
   draw() {
+    const grd = this.ctx.createRadialGradient(
+      (this.pos[0]),
+      (this.pos[1]),
+      this.size * 0.3,
+      (this.pos[0]),
+      (this.pos[1]),
+      this.size
+    );
+    grd.addColorStop(0, "red");
+    grd.addColorStop(1, "transparent");
+
+    this.ctx.beginPath();
+    this.ctx.arc(
+      (this.pos[0]),
+      (this.pos[1]),
+      (this.size / 2) * 1.5,
+      0,
+      2 * Math.PI
+    );
+    this.ctx.strokeStyle = "transparent";
+    this.ctx.stroke();
+    this.ctx.fillStyle = grd;
+    this.ctx.fill();
+
+
     this.ctx.save();
     this.ctx.translate(this.pos[0], this.pos[1]);
     this.ctx.rotate(Math.PI / 180 * (this.angle += 3));
