@@ -24,9 +24,9 @@ class Bolt {
   }
 
   move() {
-    if (this.moveLeft) {
+    if (this.moveLeft && this.pos[0] > -35) {
       this.pos[0] -= this.speed;
-    } else if (this.moveRight) {
+    } else if (this.moveRight && this.pos[0] < 1140) {
       this.pos[0] += this.speed;
     }
   }
