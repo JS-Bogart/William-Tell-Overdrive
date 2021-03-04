@@ -75,7 +75,7 @@ class Game {
     ];
     const positions = ["pos1", "pos2", "pos3", "pos4"];
     const asteroid = asteroids[Math.floor(Math.random() * Math.floor(7))]
-    const pos = positions[Math.floor(Math.random() * Math.floor(5))];
+    const pos = positions[Math.floor(Math.random() * Math.floor(4))];
     this.asteroids.push(new Asteroid(this.ctx, asteroid, pos));
     console.log(this.asteroids);
   }

@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const ctx = gameCanvas.getContext("2d");
 
   const game = new Game(ctx);
-  game.draw(ctx);
-
   new GameView(game, ctx).start();
 });
 
