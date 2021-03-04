@@ -112,6 +112,12 @@ class Game {
     }, 1 * 1000);
   };
 
+  // Bolt
+
+  moveBolt(dir) {
+    this.bolt.move(dir);
+  }
+
   // Animation
 
   draw(ctx) {

@@ -10,5 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const game = new Game(ctx);
   new GameView(game, ctx).start();
+
+  document.addEventListener("keydown", event => {
+
+    // if (event.isComposing || event.keyCode === 229) {
+    //   return;
+    // }
+    if (event.code === "ArrowLeft") {
+      game.moveBolt("left")
+    } else if (event.code === "ArrowRight") {
+      game.moveBolt("right")
+    }
+
+  });
 });
 

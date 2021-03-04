@@ -22,9 +22,9 @@ class Bolt {
 
   move(dir) {
     if (dir === "left") {
-      this.pos[0] -= 5;
+      this.pos[0] -= 20;
     } else if (dir === "right") {
-      this.pos[0] += 5;
+      this.pos[0] += 20;
     }
   }
 
