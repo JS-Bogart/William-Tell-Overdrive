@@ -1,6 +1,7 @@
 import Planet from './planet';
 import Asteroid from './asteroid';
 import Bolt from './bolt';
+import Collisions from './collisions';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
@@ -146,6 +147,7 @@ class Game {
         asteroid.move();
       }
     });
+    
   }
 
 }
