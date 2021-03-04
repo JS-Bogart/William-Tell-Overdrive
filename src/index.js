@@ -11,17 +11,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const game = new Game(ctx);
   new GameView(game, ctx).start();
 
+  let moveLeft = false;
+  let moveRight = false;
+
   document.addEventListener("keydown", event => {
-
-    // if (event.isComposing || event.keyCode === 229) {
-    //   return;
-    // }
     if (event.code === "ArrowLeft") {
-      game.moveBolt("left")
+      moveLeft = true;
+      game.moveBolt(moveLeft, moveRight);
     } else if (event.code === "ArrowRight") {
-      game.moveBolt("right")
+      moveRight = true;
+      game.moveBolt(moveLeft, moveRight);
     }
-
   });
+
+  document.addEventListener("keyup", event => {
+    if (event.code === "ArrowLeft") {
+      moveLeft = false;
+      game.moveBolt(moveLeft, moveRight);
+    } else if (event.code === "ArrowRight") {
+      moveRight = false;
+      game.moveBolt(moveLeft, moveRight);
+    }
+  });
+
 });
 

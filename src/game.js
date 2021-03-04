@@ -114,8 +114,9 @@ class Game {
 
   // Bolt
 
-  moveBolt(dir) {
-    this.bolt.move(dir);
+  moveBolt(moveLeft, moveRight) {
+    this.bolt.moveLeft = moveLeft;
+    this.bolt.moveRight = moveRight;
   }
 
   // Animation
@@ -132,6 +133,8 @@ class Game {
   };
 
   step() {
+    this.bolt.move();
+
     this.planets.forEach(planet => {
       if (planet) {
         planet.move();

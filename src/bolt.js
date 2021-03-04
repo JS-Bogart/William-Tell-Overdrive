@@ -8,6 +8,9 @@ class Bolt {
     this.bolt = bolt;
     this.dim_x = 100;
     this.dim_y = 499;
+    this.speed = 5;
+    this.moveLeft = false;
+    this.moveRight = false;
   }
 
   draw() {
@@ -20,11 +23,11 @@ class Bolt {
     );
   }
 
-  move(dir) {
-    if (dir === "left") {
-      this.pos[0] -= 20;
-    } else if (dir === "right") {
-      this.pos[0] += 20;
+  move() {
+    if (this.moveLeft) {
+      this.pos[0] -= this.speed;
+    } else if (this.moveRight) {
+      this.pos[0] += this.speed;
     }
   }
 
