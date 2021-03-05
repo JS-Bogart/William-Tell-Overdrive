@@ -1,6 +1,6 @@
-import Planet from './planet';
-import Asteroid from './asteroid';
-import Bolt from './bolt';
+import Planet from './planet.js';
+import Asteroid from './asteroid.js';
+import Bolt from './bolt.js';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
