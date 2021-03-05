@@ -1,7 +1,6 @@
 import Planet from './planet';
 import Asteroid from './asteroid';
 import Bolt from './bolt';
-import Collisions from './collisions';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
@@ -136,18 +135,18 @@ class Game {
   step() {
     this.bolt.move();
 
+    this.asteroids.forEach(asteroid => {
+      if (asteroid) {
+        asteroid.move();
+      }
+    });
+
     this.planets.forEach(planet => {
       if (planet) {
         planet.move();
       }
     });
 
-    this.asteroids.forEach(asteroid => {
-      if (asteroid) {
-        asteroid.move();
-      }
-    });
-    
   }
 
 }

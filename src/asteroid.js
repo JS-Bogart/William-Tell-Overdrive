@@ -32,6 +32,11 @@ class Asteroid {
     if (this.startPos === "pos2") this.pos = [540, 50];
     if (this.startPos === "pos3") this.pos = [640, 50];
     if (this.startPos === "pos4") this.pos = [740, 50];
+
+    this.centerPos = [
+      (this.pos[0] + (this.size / 2)),
+      (this.pos[1] + (this.size / 2))
+    ];
   }
 
   draw() {
@@ -87,6 +92,11 @@ class Asteroid {
     } else if (this.startPos === "pos4") {
       this.pos[0] += 1.0;
     }
+
+    this.centerPos = [
+      (this.pos[0] + (this.size / 2)),
+      (this.pos[1] + (this.size / 2))
+    ];
   }
 }
 

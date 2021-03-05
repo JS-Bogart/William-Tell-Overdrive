@@ -47,6 +47,11 @@ class Planet {
     if (this.startPos === "pos3") this.pos = [590, 50];
     if (this.startPos === "pos4") this.pos = [690, 50];
     if (this.startPos === "pos5") this.pos = [790, 50];
+
+    this.centerPos = [
+      (this.pos[0] + (this.size / 2)), 
+      (this.pos[1] + (this.size / 2))
+    ];
   }
 
   draw() {
@@ -99,6 +104,11 @@ class Planet {
     } else if (this.startPos === "pos5") {
       this.pos[0] += 1.2;
     }
+
+    this.centerPos = [
+      (this.pos[0] + (this.size / 2)),
+      (this.pos[1] + (this.size / 2))
+    ];
   }
 }
 
