@@ -17,7 +17,6 @@ class Game {
     this.dim_y = 700;
 
     this.bgGame = bgGame;
-    this.generate = true;
   }
 
   // Planets
@@ -40,11 +39,11 @@ class Game {
     const positions = ["pos1", "pos2", "pos3", "pos4", "pos5"];
     const planet = planets[Math.floor(Math.random() * Math.floor(12))]
     const pos = positions[Math.floor(Math.random() * Math.floor(5))];
-    this.planets.push(new Planet(this.ctx, planet, "pos3"));
+    this.planets.push(new Planet(this.ctx, planet, pos));
     console.log(this.planets);
   }
 
-  removePlanet(planet) {
+  removePlanet() {
     this.planets.shift();
     console.log(this.planets);
   }
@@ -59,13 +58,13 @@ class Game {
 
     let addPlanet = this.addPlanet.bind(this);
     let removePlanet = this.removePlanet.bind(this);
-    setInterval(function () {
+    this.planetIntervalId = setInterval(function () {
 
       addPlanet();
 
       setTimeout(function () {
         removePlanet();
-      }, 4000)
+      }, 10 * 1000)
     }, 2 * 1000);
   };
 
@@ -84,7 +83,7 @@ class Game {
     const positions = ["pos1", "pos2", "pos3", "pos4"];
     const asteroid = asteroids[Math.floor(Math.random() * Math.floor(7))]
     const pos = positions[Math.floor(Math.random() * Math.floor(4))];
-    this.asteroids.push(new Asteroid(this.ctx, asteroid, "pos1"));
+    this.asteroids.push(new Asteroid(this.ctx, asteroid, pos));
     console.log(this.asteroids);
   }
 
@@ -103,7 +102,7 @@ class Game {
 
     let addAsteroid = this.addAsteroid.bind(this);
     let removeAsteroid = this.removeAsteroid.bind(this);
-    setInterval(function () { 
+    this.asteroidIntervalId = setInterval(function () { 
 
       addAsteroid();
 
@@ -131,6 +130,10 @@ class Game {
       if (bolt.isCollidedWith(planet)) {
         console.log("COLLISION!!!!");
         planet.hit = true;
+        clearInterval(this.planetIntervalId);
+        clearInterval(this.asteroidIntervalId);
+        this.planets = [planet];
+        this.asteroids = [];
       }
     }
   }
