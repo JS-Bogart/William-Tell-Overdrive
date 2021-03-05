@@ -107,19 +107,8 @@ class Planet {
   move() {
     if (this.hit) {
       this.explosionSize += 10;
+      this.pos[0] -= 5;
       this.pos[1] -= 5;
-
-      if (this.startPos === "pos1") {
-        this.pos[0] -= 2.0;
-      } else if (this.startPos === "pos2") {
-        this.pos[0] -= 1.2;
-      } else if (this.startPos === "pos3") {
-        this.pos[0] -= 5;
-      } else if (this.startPos === "pos4") {
-        this.pos[0] += 0.3;
-      } else if (this.startPos === "pos5") {
-        this.pos[0] += 1.2;
-      }
     } else {
       this.size += 0.9;
       this.pos[1] += 3;

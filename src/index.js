@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let moveLeft = false;
   let moveRight = false;
 
+  // Keypress events
+
   document.addEventListener("keydown", event => {
     if (event.code === "ArrowLeft") {
       moveLeft = true;
