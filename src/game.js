@@ -43,7 +43,7 @@ class Game {
     console.log(this.planets);
   }
 
-  removePlanet() {
+  removePlanet(planet) {
     this.planets.shift();
     console.log(this.planets);
   }
@@ -119,6 +119,32 @@ class Game {
     this.bolt.moveRight = moveRight;
   }
 
+  // Collisions
+
+  checkPlanetCollisions() {
+    const bolt = this.bolt;
+    const planets = this.planets;
+    for (let i = 0; i < planets.length; i++) {
+      const planet = planets[i]
+
+      if (bolt.isCollidedWith(planet)) {
+        console.log("COLLISION!!!!")
+      }
+    }
+  }
+
+  checkAsteroidCollisions() {
+    const bolt = this.bolt;
+    const asteroids = this.asteroids;
+    for (let i = 0; i < asteroids.length; i++) {
+      const asteroid = asteroids[i]
+
+      if (bolt.isCollidedWith(asteroid)) {
+        console.log("COLLISION!!!!")
+      }
+    }
+  }
+
   // Animation
 
   draw(ctx) {
@@ -146,6 +172,9 @@ class Game {
         planet.move();
       }
     });
+
+    this.checkPlanetCollisions();
+    this.checkAsteroidCollisions();
 
   }
 

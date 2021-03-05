@@ -43,7 +43,7 @@ class Bolt {
 
   isCollidedWith(otherObject) {
     const centerDist = this.dist(this.centerPos, (otherObject.centerPos));
-    return centerDist < (this.radius + (otherObject.size/2));
+    return centerDist < (this.radius + (otherObject.size/2*0.8));
   };
 
 }

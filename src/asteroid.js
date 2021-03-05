@@ -94,8 +94,10 @@ class Asteroid {
     }
 
     this.centerPos = [
-      (this.pos[0] + (this.size / 2)),
-      (this.pos[1] + (this.size / 2))
+      (this.pos[0] - (this.size / 3)),
+      (this.pos[1] - (this.size / 3))
+      // (this.pos[0] + (this.size / 2)),
+      // (this.pos[1] + (this.size / 2))
     ];
   }
 }
