@@ -17,6 +17,7 @@ class Game {
     this.dim_y = 700;
 
     this.bgGame = bgGame;
+    this.generate = true;
   }
 
   // Planets
@@ -39,7 +40,7 @@ class Game {
     const positions = ["pos1", "pos2", "pos3", "pos4", "pos5"];
     const planet = planets[Math.floor(Math.random() * Math.floor(12))]
     const pos = positions[Math.floor(Math.random() * Math.floor(5))];
-    this.planets.push(new Planet(this.ctx, planet, pos));
+    this.planets.push(new Planet(this.ctx, planet, "pos3"));
     console.log(this.planets);
   }
 
@@ -83,7 +84,7 @@ class Game {
     const positions = ["pos1", "pos2", "pos3", "pos4"];
     const asteroid = asteroids[Math.floor(Math.random() * Math.floor(7))]
     const pos = positions[Math.floor(Math.random() * Math.floor(4))];
-    this.asteroids.push(new Asteroid(this.ctx, asteroid, pos));
+    this.asteroids.push(new Asteroid(this.ctx, asteroid, "pos1"));
     console.log(this.asteroids);
   }
 
@@ -108,7 +109,7 @@ class Game {
 
       setTimeout(function () {
         removeAsteroid();
-      }, 4000)
+      }, 6000)
     }, 1 * 1000);
   };
 
@@ -128,7 +129,8 @@ class Game {
       const planet = planets[i]
 
       if (bolt.isCollidedWith(planet)) {
-        console.log("COLLISION!!!!")
+        console.log("COLLISION!!!!");
+        planet.hit = true;
       }
     }
   }
@@ -140,7 +142,8 @@ class Game {
       const asteroid = asteroids[i]
 
       if (bolt.isCollidedWith(asteroid)) {
-        console.log("COLLISION!!!!")
+        console.log("COLLISION!!!!");
+        asteroid.hit = true;
       }
     }
   }

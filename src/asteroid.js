@@ -12,6 +12,8 @@ const asteroid6 = new Image();
 asteroid6.src = "assets/images/asteroids/asteroid6.png";
 const asteroid7 = new Image();
 asteroid7.src = "assets/images/asteroids/asteroid7.png";
+const explosion = new Image();
+explosion.src = "assets/images/explosions/asteroid_explosion.png";
 
 class Asteroid {
   constructor(ctx, type, startPos) {
@@ -20,6 +22,9 @@ class Asteroid {
     this.startPos = startPos;
     this.size = 5;
     this.angle = 0;
+    this.hit = false;
+    this.explosion = explosion;
+    this.explosionSize = 50;
     if (this.type === "asteroid1") this.asteroid = asteroid1;
     if (this.type === "asteroid2") this.asteroid = asteroid2;
     if (this.type === "asteroid3") this.asteroid = asteroid3;
@@ -40,65 +45,94 @@ class Asteroid {
   }
 
   draw() {
-    const grd = this.ctx.createRadialGradient(
-      (this.pos[0]),
-      (this.pos[1]),
-      this.size * 0.3,
-      (this.pos[0]),
-      (this.pos[1]),
-      this.size
-    );
-    grd.addColorStop(0, "red");
-    grd.addColorStop(1, "transparent");
-
-    this.ctx.beginPath();
-    this.ctx.arc(
-      (this.pos[0]),
-      (this.pos[1]),
-      (this.size / 2) * 1.5,
-      0,
-      2 * Math.PI
-    );
-    this.ctx.strokeStyle = "transparent";
-    this.ctx.stroke();
-    this.ctx.fillStyle = grd;
-    this.ctx.fill();
-
-
-    this.ctx.save();
-    this.ctx.translate(this.pos[0], this.pos[1]);
-    this.ctx.rotate(Math.PI / 180 * (this.angle += 3));
-    this.ctx.drawImage(
-      this.asteroid,
-      -(this.size / 2),
-      -(this.size / 2),
-      this.size,
-      this.size
+    if (this.hit) {
+      this.ctx.save();
+      this.ctx.translate(this.pos[0], this.pos[1]);
+      this.ctx.rotate(Math.PI / 180 * (this.angle += 1));
+      this.ctx.drawImage(
+        this.explosion,
+        -(this.explosionSize / 2),
+        -(this.explosionSize / 2),
+        this.explosionSize,
+        this.explosionSize
       )
-    this.ctx.translate(-this.pos[0], -this.pos[1]);
-    this.ctx.restore();
+      this.ctx.translate(-this.pos[0], -this.pos[1]);
+      this.ctx.restore();
+    } else {
+      const grd = this.ctx.createRadialGradient(
+        (this.pos[0]),
+        (this.pos[1]),
+        this.size * 0.3,
+        (this.pos[0]),
+        (this.pos[1]),
+        this.size
+      );
+      grd.addColorStop(0, "red");
+      grd.addColorStop(1, "transparent");
+  
+      this.ctx.beginPath();
+      this.ctx.arc(
+        (this.pos[0]),
+        (this.pos[1]),
+        (this.size / 2) * 1.5,
+        0,
+        2 * Math.PI
+      );
+      this.ctx.strokeStyle = "transparent";
+      this.ctx.stroke();
+      this.ctx.fillStyle = grd;
+      this.ctx.fill();
+  
+  
+      this.ctx.save();
+      this.ctx.translate(this.pos[0], this.pos[1]);
+      this.ctx.rotate(Math.PI / 180 * (this.angle += 3));
+      this.ctx.drawImage(
+        this.asteroid,
+        -(this.size / 2),
+        -(this.size / 2),
+        this.size,
+        this.size
+      )
+      this.ctx.translate(-this.pos[0], -this.pos[1]);
+      this.ctx.restore();
+    }
+
   }
 
   move() {
-    this.size += 0.3;
-    this.pos[1] += 3;
+    if (this.hit) {
+      this.explosionSize += 4;
+      this.pos[1] += 3;
 
-    if (this.startPos === "pos1") {
-      this.pos[0] -= 1.0;
-    } else if (this.startPos === "pos2") {
-      this.pos[0] -= 0.3;
-    } else if (this.startPos === "pos3") {
-      this.pos[0] += 0.3;
-    } else if (this.startPos === "pos4") {
-      this.pos[0] += 1.0;
+      if (this.startPos === "pos1") {
+        this.pos[0] -= 1.0;
+      } else if (this.startPos === "pos2") {
+        this.pos[0] -= 0.3;
+      } else if (this.startPos === "pos3") {
+        this.pos[0] += 0.3;
+      } else if (this.startPos === "pos4") {
+        this.pos[0] += 1.0;
+      }
+    } else {
+      this.size += 0.3;
+      this.pos[1] += 3;
+  
+      if (this.startPos === "pos1") {
+        this.pos[0] -= 1.0;
+      } else if (this.startPos === "pos2") {
+        this.pos[0] -= 0.3;
+      } else if (this.startPos === "pos3") {
+        this.pos[0] += 0.3;
+      } else if (this.startPos === "pos4") {
+        this.pos[0] += 1.0;
+      }
+  
+      this.centerPos = [
+        (this.pos[0] - (this.size / 3)),
+        (this.pos[1] - (this.size / 3))
+      ];
     }
-
-    this.centerPos = [
-      (this.pos[0] - (this.size / 3)),
-      (this.pos[1] - (this.size / 3))
-      // (this.pos[0] + (this.size / 2)),
-      // (this.pos[1] + (this.size / 2))
-    ];
   }
 }
 

@@ -22,6 +22,8 @@ const planet11 = new Image();
 planet11.src = "assets/images/planets/planet11.png";
 const planet12 = new Image();
 planet12.src = "assets/images/planets/planet12.png";
+const explosion = new Image();
+explosion.src = "assets/images/explosions/planet_explosion.png";
 
 class Planet {
   constructor(ctx, type, startPos) {
@@ -29,6 +31,9 @@ class Planet {
     this.type = type;
     this.startPos = startPos;
     this.size = 5;
+    this.hit = false;
+    this.explosion = explosion;
+    this.explosionSize = 100;
     if (this.type === "planet1") this.planet = planet1;
     if (this.type === "planet2") this.planet = planet2;
     if (this.type === "planet3") this.planet = planet3;
@@ -55,60 +60,87 @@ class Planet {
   }
 
   draw() {
-    const grd = this.ctx.createRadialGradient(
-      (this.pos[0] + (this.size / 2)), 
-      (this.pos[1] + (this.size / 2)), 
-      this.size * 0.5, 
-      (this.pos[0] + (this.size / 2)), 
-      (this.pos[1] + (this.size / 2)), 
-      this.size
-    );
-    grd.addColorStop(0, "blue");
-    grd.addColorStop(1, "transparent");
-
-    this.ctx.beginPath();
-    this.ctx.arc(
-      (this.pos[0] + (this.size / 2)),
-      (this.pos[1] + (this.size / 2)),
-      (this.size / 2) * 1.7,
-      0,
-      2 * Math.PI
-    );
-    this.ctx.strokeStyle = "transparent";
-    this.ctx.stroke();
-    this.ctx.fillStyle = grd;
-    this.ctx.fill();
-
-
-    this.ctx.drawImage(
-      this.planet, 
-      this.pos[0], 
-      this.pos[1], 
-      this.size, 
-      this.size
-    );
+    if (this.hit) {
+      this.ctx.drawImage(
+        this.explosion,
+        this.pos[0] + 10,
+        this.pos[1] + 30,
+        this.explosionSize,
+        this.explosionSize
+      );
+    } else {
+      const grd = this.ctx.createRadialGradient(
+        (this.pos[0] + (this.size / 2)), 
+        (this.pos[1] + (this.size / 2)), 
+        this.size * 0.5, 
+        (this.pos[0] + (this.size / 2)), 
+        (this.pos[1] + (this.size / 2)), 
+        this.size
+      );
+      grd.addColorStop(0, "blue");
+      grd.addColorStop(1, "transparent");
+  
+      this.ctx.beginPath();
+      this.ctx.arc(
+        (this.pos[0] + (this.size / 2)),
+        (this.pos[1] + (this.size / 2)),
+        (this.size / 2) * 1.7,
+        0,
+        2 * Math.PI
+      );
+      this.ctx.strokeStyle = "transparent";
+      this.ctx.stroke();
+      this.ctx.fillStyle = grd;
+      this.ctx.fill();
+  
+  
+      this.ctx.drawImage(
+        this.planet, 
+        this.pos[0], 
+        this.pos[1], 
+        this.size, 
+        this.size
+      );
+    }
   }
 
   move() {
-    this.size += 0.9;
-    this.pos[1] += 3;
+    if (this.hit) {
+      this.explosionSize += 10;
+      this.pos[1] -= 5;
 
-    if (this.startPos === "pos1") {
-      this.pos[0] -= 2.0;
-    } else if (this.startPos === "pos2") {
-      this.pos[0] -= 1.2;
-    } else if (this.startPos === "pos3") {
-      this.pos[0] -= 0.45;
-    } else if (this.startPos === "pos4") {
-      this.pos[0] += 0.3;
-    } else if (this.startPos === "pos5") {
-      this.pos[0] += 1.2;
+      if (this.startPos === "pos1") {
+        this.pos[0] -= 2.0;
+      } else if (this.startPos === "pos2") {
+        this.pos[0] -= 1.2;
+      } else if (this.startPos === "pos3") {
+        this.pos[0] -= 5;
+      } else if (this.startPos === "pos4") {
+        this.pos[0] += 0.3;
+      } else if (this.startPos === "pos5") {
+        this.pos[0] += 1.2;
+      }
+    } else {
+      this.size += 0.9;
+      this.pos[1] += 3;
+  
+      if (this.startPos === "pos1") {
+        this.pos[0] -= 2.0;
+      } else if (this.startPos === "pos2") {
+        this.pos[0] -= 1.2;
+      } else if (this.startPos === "pos3") {
+        this.pos[0] -= 0.45;
+      } else if (this.startPos === "pos4") {
+        this.pos[0] += 0.3;
+      } else if (this.startPos === "pos5") {
+        this.pos[0] += 1.2;
+      }
+  
+      this.centerPos = [
+        (this.pos[0] + (this.size / 3)),
+        (this.pos[1] + (this.size / 3))
+      ];
     }
-
-    this.centerPos = [
-      (this.pos[0] + (this.size / 3)),
-      (this.pos[1] + (this.size / 3))
-    ];
   }
 }
 

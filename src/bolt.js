@@ -11,8 +11,10 @@ class Bolt {
     this.speed = 5;
     this.moveLeft = false;
     this.moveRight = false;
-    this.radius = 23.5;
-    this.centerPos = [573.5, 622.5]
+    // this.radius = 23.5;
+    this.radius = 10;
+    // this.centerPos = [573.5, 622.5]
+    this.centerPos = [573.5, 580]
   }
 
   draw() {
@@ -43,7 +45,7 @@ class Bolt {
 
   isCollidedWith(otherObject) {
     const centerDist = this.dist(this.centerPos, (otherObject.centerPos));
-    return centerDist < (this.radius + (otherObject.size/2*0.8));
+    return centerDist < (this.radius + (otherObject.size/2*0.9));
   };
 
 }
