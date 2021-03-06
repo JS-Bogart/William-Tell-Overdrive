@@ -1,5 +1,7 @@
 const bolt = new Image();
-bolt.src = "assets/images/bolt/bolt.png"
+bolt.src = "assets/images/bolt/bolt.png";
+const crossbow = new Image();
+crossbow.src = "assets/images/crossbow/cosmic_crossbow.png";
 
 class Bolt {
   constructor(ctx) {
@@ -12,10 +14,23 @@ class Bolt {
     this.moveLeft = false;
     this.moveRight = false;
     this.radius = 10;
-    this.centerPos = [573.5, 580]
+    this.centerPos = [573.5, 580];
+    this.crossbow = crossbow;
+    this.crossbowStatus = "loaded";
+    this.cbPos = [350, 550];
+    this.cbDims = [500, 500];
   }
 
   draw() {
+    if (this.crossbowStatus !== "fired") {
+      this.ctx.drawImage(
+        this.crossbow,
+        this.cbPos[0],
+        this.cbPos[1],
+        this.cbDims[0],
+        this.cbDims[1]
+      );
+    }
     this.ctx.drawImage(
       this.bolt,
       this.pos[0],
@@ -29,9 +44,11 @@ class Bolt {
     if (this.moveLeft && this.pos[0] > -35) {
       this.pos[0] -= this.speed;
       this.centerPos[0] -= this.speed;
+      this.cbPos[0] -= this.speed;
     } else if (this.moveRight && this.pos[0] < 1140) {
       this.pos[0] += this.speed;
       this.centerPos[0] += this.speed;
+      this.cbPos[0] += this.speed;
     }
   }
 
