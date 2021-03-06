@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameCanvas = document.getElementsByClassName("game-canvas")[0];
   gameCanvas.width = 1200;
   gameCanvas.height = 700;
-
+  console.log("Hello");
   const ctx = gameCanvas.getContext("2d");
 
   const game = new Game(ctx);
@@ -36,9 +36,4 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Our app is running on port ${PORT}`);
 });
