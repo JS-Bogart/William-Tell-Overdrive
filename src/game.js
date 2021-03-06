@@ -56,8 +56,8 @@ class Game {
 
   generatePlanets() {
 
-    let addPlanet = this.addPlanet.bind(this);
-    let removePlanet = this.removePlanet.bind(this);
+    const addPlanet = this.addPlanet.bind(this);
+    const removePlanet = this.removePlanet.bind(this);
     this.planetIntervalId = setInterval(function () {
 
       addPlanet();
@@ -100,8 +100,8 @@ class Game {
 
   generateAsteroids() {
 
-    let addAsteroid = this.addAsteroid.bind(this);
-    let removeAsteroid = this.removeAsteroid.bind(this);
+    const addAsteroid = this.addAsteroid.bind(this);
+    const removeAsteroid = this.removeAsteroid.bind(this);
     this.asteroidIntervalId = setInterval(function () { 
 
       addAsteroid();
@@ -152,6 +152,11 @@ class Game {
   }
 
   // Animation
+
+  stopObjects() {
+    clearInterval(this.planetIntervalId);
+    clearInterval(this.asteroidIntervalId);
+  }
 
   draw(ctx) {
     ctx.clearRect(0, 0, this.dim_x, this.dim_y);

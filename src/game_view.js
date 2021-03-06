@@ -9,11 +9,19 @@ class GameView {
     this.game.generateAsteroids(this.ctx);
   }
 
+  finalPhase() {
+    this.game.stopObjects();
+  }
+
   start() {
     const generateObjects = this.generateObjects.bind(this);
+    const finalPhase = this.finalPhase.bind(this);
     setTimeout(function () {
       generateObjects();
-    }, 14 * 1000)
+    }, 14 * 1000);
+    setTimeout(function () {
+      finalPhase();
+    }, 93 * 1000);
     requestAnimationFrame(this.animate.bind(this));
   };
   
