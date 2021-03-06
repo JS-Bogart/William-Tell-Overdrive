@@ -130,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pla
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// const wto = new Audio(\"assets/music/wto.mp3\")\n\nclass GameView {\n  constructor(game, ctx) {\n    this.ctx = ctx;\n    this.game = game;\n  }\n\n  start() {\n    // wto.play();\n    this.game.generatePlanets(this.ctx);\n    this.game.generateAsteroids(this.ctx);\n    requestAnimationFrame(this.animate.bind(this));\n  };\n  \n  animate() {\n    this.game.step();\n    this.game.draw(this.ctx);\n  \n    requestAnimationFrame(this.animate.bind(this));\n  };\n}\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameView);\n\n//# sourceURL=webpack:///./src/game_view.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nclass GameView {\n  constructor(game, ctx) {\n    this.ctx = ctx;\n    this.game = game;\n  }\n\n  generateObjects() {\n    this.game.generatePlanets(this.ctx);\n    this.game.generateAsteroids(this.ctx);\n  }\n\n  start() {\n    const generateObjects = this.generateObjects.bind(this);\n    setTimeout(function () {\n      generateObjects();\n    }, 14 * 1000)\n    requestAnimationFrame(this.animate.bind(this));\n  };\n  \n  animate() {\n    this.game.step();\n    this.game.draw(this.ctx);\n  \n    requestAnimationFrame(this.animate.bind(this));\n  };\n}\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameView);\n\n//# sourceURL=webpack:///./src/game_view.js?");
 
 /***/ }),
 
