@@ -5,16 +5,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameCanvas = document.getElementsByClassName("game-canvas")[0];
   gameCanvas.width = 1200;
   gameCanvas.height = 700;
-  console.log("Hello");
+
   const ctx = gameCanvas.getContext("2d");
 
   const game = new Game(ctx);
   new GameView(game, ctx).start();
 
+  
+  // Keypress events
+  
   let moveLeft = false;
   let moveRight = false;
-
-  // Keypress events
 
   document.addEventListener("keydown", event => {
     if (event.code === "ArrowLeft") {
