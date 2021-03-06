@@ -12,6 +12,11 @@ body {
   height: 100%;
 }
 
+.title {
+  position: absolute;
+  z-index: -1;
+}
+
 .body-top {
   width: 62.5%;
   display: flex;
