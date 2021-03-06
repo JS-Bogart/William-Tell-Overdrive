@@ -1,3 +1,5 @@
+// const wto = new Audio("assets/music/wto.mp3")
+
 class GameView {
   constructor(game, ctx) {
     this.ctx = ctx;
@@ -5,6 +7,7 @@ class GameView {
   }
 
   start() {
+    // wto.play();
     this.game.generatePlanets(this.ctx);
     this.game.generateAsteroids(this.ctx);
     requestAnimationFrame(this.animate.bind(this));

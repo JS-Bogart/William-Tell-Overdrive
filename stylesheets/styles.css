@@ -59,6 +59,15 @@ body {
   margin-right: 20px;
 }
 
+#audio-btn {
+  padding: 5px;
+  height: 50px;
+}
+
+#audio-btn > img {
+  height: 30px;
+}
+
 .links {
   display: flex;
   flex-direction: column;

@@ -11,7 +11,17 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("play-btn").addEventListener("click", () => {
 
     const game = new Game(ctx);
+    const wto = new Audio("assets/music/wto.mp3")
+    wto.play();
     new GameView(game, ctx).start();
+
+    document.getElementById("audio-btn").addEventListener("click", () => {
+      if (wto.muted) {
+        wto.muted = false;
+      } else {
+        wto.muted = true;
+      }
+    });
 
     let moveLeft = false;
     let moveRight = false;
