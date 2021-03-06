@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-top {
+  width: 62.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.body-top * img {
+  height: 50px;
+}
+
+.body-top * button {
+  background-color: black;
+  border-radius: 4px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
