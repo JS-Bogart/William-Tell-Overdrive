@@ -5,11 +5,19 @@ body {
   align-items: center;
 }
 
+.page-bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
 .body-top {
   width: 62.5%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 20px;
 }
 
 .body-top * img {
@@ -19,6 +27,11 @@ body {
 .body-top * button {
   background-color: black;
   border-radius: 4px;
+  margin-top: 20px;
+}
+
+.buttons > button {
+  margin-right: 20px;
 }
 
 .links {
