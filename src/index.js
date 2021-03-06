@@ -12,8 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
   new GameView(game, ctx).start();
 
   
-  // Keypress events
   
+  // Keypress events
+
   let moveLeft = false;
   let moveRight = false;
 
