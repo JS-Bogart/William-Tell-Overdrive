@@ -133,6 +133,7 @@ class Game {
       if (bolt.isCollidedWith(planet)) {
         console.log("COLLISION!!!!");
         planet.hit = true;
+        bolt.hit = true;
         clearInterval(this.planetIntervalId);
         clearInterval(this.asteroidIntervalId);
         this.planets = [planet];
@@ -152,6 +153,28 @@ class Game {
         console.log("COLLISION!!!!");
         asteroid.hit = true;
       }
+    }
+  }
+
+  checkEarthCollision() {
+    const bolt = this.bolt;
+    const earth = this.earth;
+
+    if (bolt.isCollidedWith(earth)) {
+      console.log("COLLISION!!!!");
+      earth.hit = true;
+      bolt.hit = true;
+    }
+  }
+
+  checkMurderMoonCollision() {
+    const bolt = this.bolt;
+    const murderMoon = this.murderMoon;
+
+    if (bolt.isCollidedWith(murderMoon)) {
+      console.log("COLLISION!!!!");
+      murderMoon.hit = true;
+      bolt.hit = true;
     }
   }
 
@@ -201,6 +224,9 @@ class Game {
       this.bolt.move();
       this.murderMoon.move();
       this.earth.move();
+
+      this.checkEarthCollision();
+      this.checkMurderMoonCollision();
     }
   }
 

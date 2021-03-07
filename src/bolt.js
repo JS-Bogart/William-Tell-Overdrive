@@ -19,6 +19,7 @@ class Bolt {
     this.crossbowStatus = "loaded";
     this.cbPos = [350, 550];
     this.cbDims = [500, 500];
+    this.hit = false;
   }
 
   draw() {
@@ -31,13 +32,15 @@ class Bolt {
         this.cbDims[1]
       );
     }
-    this.ctx.drawImage(
-      this.bolt,
-      this.pos[0],
-      this.pos[1],
-      this.dim_x,
-      this.dim_y
-    );
+    if (!this.hit) {
+      this.ctx.drawImage(
+        this.bolt,
+        this.pos[0],
+        this.pos[1],
+        this.dim_x,
+        this.dim_y
+      );
+    }
   }
 
   move() {
