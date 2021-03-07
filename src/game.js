@@ -3,6 +3,7 @@ import Asteroid from './asteroid.js';
 import Bolt from './bolt.js';
 import Earth from './earth.js';
 import MurderMoon from './murder_moon';
+import Energy from './energy';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
@@ -12,13 +13,15 @@ const lose = new Image();
 lose.src = "assets/images/text/lose.png"
 
 class Game {
-  constructor(ctx) {
+  constructor(ctx, eBar) {
     this.ctx = ctx;
+    this.eBar = eBar;
     this.planets = [];
     this.asteroids = [];
     this.earth = new Earth(ctx);
     this.murderMoon = new MurderMoon(ctx);
     this.bolt = new Bolt(ctx);
+    this.energy = new Energy(eBar);
     this.bg_color = "#000000";
     this.dim_x = 1200;
     this.dim_y = 700;
@@ -26,6 +29,8 @@ class Game {
     this.gameStatus = "playing";
     this.win = win;
     this.lose = lose;
+    this.bar_x = 75;
+    this.bar_y = 700;
   }
 
   // Planets
@@ -216,11 +221,15 @@ class Game {
     clearInterval(this.asteroidIntervalId);
   }
 
-  draw(ctx) {
+  draw(ctx, eBar) {
     ctx.clearRect(0, 0, this.dim_x, this.dim_y);
     ctx.fillStyle = this.bg_color;
     ctx.fillRect(0, 0, this.dim_x, this.dim_y);
     ctx.drawImage(this.bgGame, 0, 0, this.dim_x, this.dim_y);
+    eBar.clearRect(0, 0, this.bar_x, this.bar_y);
+    eBar.fillStyle = this.bg_color;
+    eBar.fillRect(0, 0, this.bar_x, this.bar_y)
+    this.energy.draw();
 
     if (this.gameStatus === "playing") {
       this.drawPlanets();

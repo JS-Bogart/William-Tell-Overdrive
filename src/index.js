@@ -7,12 +7,16 @@ document.addEventListener("DOMContentLoaded", function () {
   gameCanvas.width = 1200;
   gameCanvas.height = 700;
   const ctx = gameCanvas.getContext("2d");
+  const energyBar = document.getElementsByClassName("energy-bar")[0];
+  energyBar.width = 75;
+  energyBar.height = 700;
+  const eBar = energyBar.getContext("2d");
   const wto = new Audio("assets/music/wto.mp3")
   
   document.getElementById("play-btn").addEventListener("click", () => {
     
-    const game = new Game(ctx);
-    new GameView(game, ctx).start();
+    const game = new Game(ctx, eBar);
+    new GameView(game, ctx, eBar).start();
 
     wto.currentTime = 0;
     wto.play();
