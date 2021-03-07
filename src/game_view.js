@@ -22,11 +22,18 @@ class GameView {
     this.game.gameStatus = "ending";
   }
 
+  checkMiss() {
+    if (this.game.gameStatus === "ending") {
+      this.game.gameStatus = "loseOne";
+    }
+  }
+
   start() {
     const generateObjects = this.generateObjects.bind(this);
     const finalPhase = this.finalPhase.bind(this);
     const fireCrossbow = this.fireCrossbow.bind(this);
     const removeCrossbow = this.removeCrossbow.bind(this);
+    const checkMiss = this.checkMiss.bind(this);
     setTimeout(function () {
       generateObjects();
       fireCrossbow();
@@ -37,6 +44,9 @@ class GameView {
     setTimeout(function () {
       finalPhase();
     }, 93 * 1000);
+    setTimeout(function () {
+      checkMiss();
+    }, 100 * 1000);
     requestAnimationFrame(this.animate.bind(this));
   };
   

@@ -18,7 +18,7 @@ class Earth {
     if (this.hit) {
       this.ctx.drawImage(
         this.explosion,
-        this.pos[0] + 10,
+        this.pos[0] + 50,
         this.pos[1] + 30,
         this.explosionSize,
         this.explosionSize
