@@ -2,6 +2,7 @@ import Planet from './planet.js';
 import Asteroid from './asteroid.js';
 import Bolt from './bolt.js';
 import Earth from './earth.js';
+import MurderMoon from './murder_moon';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
@@ -12,6 +13,7 @@ class Game {
     this.planets = [];
     this.asteroids = [];
     this.earth = new Earth(ctx);
+    this.murderMoon = new MurderMoon(ctx);
     this.bolt = new Bolt(ctx);
     this.bg_color = "#000000";
     this.dim_x = 1200;
@@ -172,6 +174,7 @@ class Game {
       this.bolt.draw();
     } else if (this.gameStatus === "ending") {
       this.earth.draw();
+      this.murderMoon.draw();
       this.bolt.draw();
     }
   };
@@ -196,6 +199,7 @@ class Game {
       this.checkAsteroidCollisions();
     } else if (this.gameStatus === "ending") {
       this.bolt.move();
+      this.murderMoon.move();
       this.earth.move();
     }
   }
