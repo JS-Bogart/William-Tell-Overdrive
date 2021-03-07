@@ -50,6 +50,9 @@ class Bolt {
       this.centerPos[0] += this.speed;
       this.cbPos[0] += this.speed;
     }
+    if (this.crossbowStatus === "shooting") {
+      this.cbPos[1] += 5;
+    }
   }
 
   dist(pos1, pos2) {

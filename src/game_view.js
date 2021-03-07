@@ -9,6 +9,14 @@ class GameView {
     this.game.generateAsteroids(this.ctx);
   }
 
+  fireCrossbow() {
+    this.game.bolt.crossbowStatus = "shooting";
+  }
+
+  removeCrossbow() {
+    this.game.bolt.crossbowStatus = "fired";
+  }
+
   finalPhase() {
     this.game.stopObjects();
   }
@@ -16,9 +24,15 @@ class GameView {
   start() {
     const generateObjects = this.generateObjects.bind(this);
     const finalPhase = this.finalPhase.bind(this);
+    const fireCrossbow = this.fireCrossbow.bind(this);
+    const removeCrossbow = this.removeCrossbow.bind(this);
     setTimeout(function () {
       generateObjects();
+      fireCrossbow();
     }, 14 * 1000);
+    setTimeout(function () {
+      removeCrossbow();
+    }, 16 * 1000);
     setTimeout(function () {
       finalPhase();
     }, 93 * 1000);

@@ -7,13 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
   gameCanvas.width = 1200;
   gameCanvas.height = 700;
   const ctx = gameCanvas.getContext("2d");
+  const wto = new Audio("assets/music/wto.mp3")
   
   document.getElementById("play-btn").addEventListener("click", () => {
-
+    
     const game = new Game(ctx);
-    const wto = new Audio("assets/music/wto.mp3")
-    wto.play();
     new GameView(game, ctx).start();
+
+    wto.currentTime = 0;
+    wto.play();
 
     document.getElementById("audio-btn").addEventListener("click", () => {
       if (wto.muted) {
