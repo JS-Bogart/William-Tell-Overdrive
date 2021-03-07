@@ -6,6 +6,10 @@ import MurderMoon from './murder_moon';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
+const win = new Image();
+win.src = "assets/images/text/win.png"
+const lose = new Image();
+lose.src = "assets/images/text/lose.png"
 
 class Game {
   constructor(ctx) {
@@ -19,7 +23,9 @@ class Game {
     this.dim_x = 1200;
     this.dim_y = 700;
     this.bgGame = bgGame;
-    this.gameStatus = "ending";
+    this.gameStatus = "playing";
+    this.win = win;
+    this.lose = lose;
   }
 
   // Planets
@@ -122,11 +128,25 @@ class Game {
     this.bolt.moveRight = moveRight;
   }
 
+  loseConditionOne() {
+    this.gameStatus = "loseOne";
+  }
+
+  loseConditionTwo() {
+    this.gameStatus = "loseTwo";
+  }
+
+  winCondition() {
+    this.gameStatus = "victory";
+  }
+
   // Collisions
 
   checkPlanetCollisions() {
     const bolt = this.bolt;
     const planets = this.planets;
+    const loseConditionOne = this.loseConditionOne.bind(this);
+
     for (let i = 0; i < planets.length; i++) {
       const planet = planets[i]
 
@@ -138,7 +158,9 @@ class Game {
         clearInterval(this.asteroidIntervalId);
         this.planets = [planet];
         this.asteroids = [];
-        this.gameStatus = "loseOne";
+        setTimeout(function () {
+          loseConditionOne();
+        }, 3000)
       }
     }
   }
@@ -146,6 +168,7 @@ class Game {
   checkAsteroidCollisions() {
     const bolt = this.bolt;
     const asteroids = this.asteroids;
+
     for (let i = 0; i < asteroids.length; i++) {
       const asteroid = asteroids[i]
 
@@ -159,22 +182,30 @@ class Game {
   checkEarthCollision() {
     const bolt = this.bolt;
     const earth = this.earth;
+    const loseConditionTwo = this.loseConditionTwo.bind(this);
 
     if (bolt.isCollidedWith(earth)) {
       console.log("COLLISION!!!!");
       earth.hit = true;
       bolt.hit = true;
+      setTimeout(function () {
+        loseConditionTwo();
+      }, 3000)
     }
   }
 
   checkMurderMoonCollision() {
     const bolt = this.bolt;
     const murderMoon = this.murderMoon;
+    const winCondition = this.winCondition.bind(this);
 
     if (bolt.isCollidedWith(murderMoon)) {
       console.log("COLLISION!!!!");
       murderMoon.hit = true;
       bolt.hit = true;
+      setTimeout(function () {
+        winCondition();
+      }, 3000)
     }
   }
 
@@ -199,6 +230,24 @@ class Game {
       this.earth.draw();
       this.murderMoon.draw();
       this.bolt.draw();
+    } else if (this.gameStatus === "loseOne") {
+      ctx.drawImage(
+        this.lose,
+        252,
+        295.5
+      )
+    } else if (this.gameStatus === "loseTwo") {
+      ctx.drawImage(
+        this.lose,
+        252,
+        295.5
+      )
+    } else if (this.gameStatus === "victory") {
+      ctx.drawImage(
+        this.win,
+        253.5,
+        321
+      )
     }
   };
 
