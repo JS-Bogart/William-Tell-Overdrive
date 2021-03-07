@@ -240,10 +240,10 @@ class Game {
     eBar.fillStyle = this.bg_color;
     eBar.fillRect(0, 0, this.bar_x, this.bar_y)
     this.energy.draw();
+    this.drawPlanets();
+    this.drawAsteroids();
 
     if (this.gameStatus === "playing") {
-      this.drawPlanets();
-      this.drawAsteroids();
       this.bolt.draw();
     } else if (this.gameStatus === "ending") {
       this.earth.draw();
@@ -271,24 +271,23 @@ class Game {
   };
 
   step() {
-    if (this.gameStatus === "playing") {
-      this.bolt.move();
-  
-      this.asteroids.forEach(asteroid => {
-        if (asteroid) {
-          asteroid.move();
-        }
-      });
-  
-      this.planets.forEach(planet => {
-        if (planet) {
-          planet.move();
-        }
-      });
-  
-      this.checkPlanetCollisions();
-      this.checkAsteroidCollisions();
-    } else if (this.gameStatus === "ending") {
+    this.bolt.move();
+
+    this.asteroids.forEach(asteroid => {
+      if (asteroid) {
+        asteroid.move();
+      }
+    });
+
+    this.planets.forEach(planet => {
+      if (planet) {
+        planet.move();
+      }
+    });
+
+    this.checkPlanetCollisions();
+    this.checkAsteroidCollisions();
+    if (this.gameStatus === "ending") {
       this.bolt.move();
       this.murderMoon.move();
       this.earth.move();

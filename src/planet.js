@@ -72,10 +72,10 @@ class Planet {
       const grd = this.ctx.createRadialGradient(
         (this.pos[0] + (this.size / 2)), 
         (this.pos[1] + (this.size / 2)), 
-        this.size * 0.5, 
+        this.size * 0.3, 
         (this.pos[0] + (this.size / 2)), 
         (this.pos[1] + (this.size / 2)), 
-        this.size
+        this.size * 1.0
       );
       grd.addColorStop(0, "blue");
       grd.addColorStop(1, "transparent");
@@ -84,7 +84,7 @@ class Planet {
       this.ctx.arc(
         (this.pos[0] + (this.size / 2)),
         (this.pos[1] + (this.size / 2)),
-        (this.size / 2) * 1.7,
+        (this.size / 2) * 1.3,
         0,
         2 * Math.PI
       );
