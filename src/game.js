@@ -1,6 +1,7 @@
 import Planet from './planet.js';
 import Asteroid from './asteroid.js';
 import Bolt from './bolt.js';
+import Earth from './earth.js';
 
 const bgGame = new Image();
 bgGame.src = "assets/images/backgrounds/game_bg.jpg";
@@ -10,13 +11,13 @@ class Game {
     this.ctx = ctx;
     this.planets = [];
     this.asteroids = [];
+    this.earth = new Earth(ctx);
     this.bolt = new Bolt(ctx);
-
     this.bg_color = "#000000";
     this.dim_x = 1200;
     this.dim_y = 700;
-
     this.bgGame = bgGame;
+    this.gameStatus = "ending";
   }
 
   // Planets
@@ -134,6 +135,7 @@ class Game {
         clearInterval(this.asteroidIntervalId);
         this.planets = [planet];
         this.asteroids = [];
+        this.gameStatus = "loseOne";
       }
     }
   }
@@ -164,29 +166,38 @@ class Game {
     ctx.fillRect(0, 0, this.dim_x, this.dim_y);
     ctx.drawImage(this.bgGame, 0, 0, this.dim_x, this.dim_y);
 
-    this.drawPlanets();
-    this.drawAsteroids();
-    this.bolt.draw();
+    if (this.gameStatus === "playing") {
+      this.drawPlanets();
+      this.drawAsteroids();
+      this.bolt.draw();
+    } else if (this.gameStatus === "ending") {
+      this.earth.draw();
+      this.bolt.draw();
+    }
   };
 
   step() {
-    this.bolt.move();
-
-    this.asteroids.forEach(asteroid => {
-      if (asteroid) {
-        asteroid.move();
-      }
-    });
-
-    this.planets.forEach(planet => {
-      if (planet) {
-        planet.move();
-      }
-    });
-
-    this.checkPlanetCollisions();
-    this.checkAsteroidCollisions();
-
+    if (this.gameStatus === "playing") {
+      this.bolt.move();
+  
+      this.asteroids.forEach(asteroid => {
+        if (asteroid) {
+          asteroid.move();
+        }
+      });
+  
+      this.planets.forEach(planet => {
+        if (planet) {
+          planet.move();
+        }
+      });
+  
+      this.checkPlanetCollisions();
+      this.checkAsteroidCollisions();
+    } else if (this.gameStatus === "ending") {
+      this.bolt.move();
+      this.earth.move();
+    }
   }
 
 }

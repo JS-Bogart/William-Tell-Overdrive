@@ -19,6 +19,7 @@ class GameView {
 
   finalPhase() {
     this.game.stopObjects();
+    this.game.gameStatus = "ending";
   }
 
   start() {
