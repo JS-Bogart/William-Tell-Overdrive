@@ -173,6 +173,7 @@ class Game {
   checkAsteroidCollisions() {
     const bolt = this.bolt;
     const asteroids = this.asteroids;
+    const energy = this.energy;
 
     for (let i = 0; i < asteroids.length; i++) {
       const asteroid = asteroids[i]
@@ -180,6 +181,8 @@ class Game {
       if (bolt.isCollidedWith(asteroid)) {
         console.log("COLLISION!!!!");
         asteroid.hit = true;
+        if (energy.energyTop < 675) energy.energyTop += 1;
+        if (energy.energyLevel > 0) energy.energyLevel -= 1;
       }
     }
   }
@@ -201,16 +204,23 @@ class Game {
 
   checkMurderMoonCollision() {
     const bolt = this.bolt;
+    const energy = this.energy;
     const murderMoon = this.murderMoon;
     const winCondition = this.winCondition.bind(this);
 
     if (bolt.isCollidedWith(murderMoon)) {
       console.log("COLLISION!!!!");
-      murderMoon.hit = true;
       bolt.hit = true;
-      setTimeout(function () {
-        winCondition();
-      }, 3000)
+      if (energy.energyLevel > 0) {
+        murderMoon.hit = true;
+        setTimeout(function () {
+          winCondition();
+        }, 3000)
+      } else {
+        setTimeout(function () {
+          loseConditionOne();
+        }, 3000)
+      }
     }
   }
 

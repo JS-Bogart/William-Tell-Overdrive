@@ -5,6 +5,7 @@ class Energy {
     this.energyLevel = 650;
   }
 
+  // Green
   // draw() {
   //   this.eBar.beginPath();
   //   this.eBar.rect(25, this.energyTop, 25, this.energyLevel);
@@ -19,6 +20,7 @@ class Energy {
   //   this.eBar.fill();
   // }
 
+  // Orange
   draw() {
     this.eBar.beginPath();
     this.eBar.rect(25, this.energyTop, 25, this.energyLevel);
