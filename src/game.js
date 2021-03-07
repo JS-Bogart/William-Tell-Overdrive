@@ -79,7 +79,7 @@ class Game {
       setTimeout(function () {
         removePlanet();
       }, 10 * 1000)
-    }, 2 * 1000);
+    }, 800);
   };
 
   // Asteroids
@@ -123,7 +123,7 @@ class Game {
       setTimeout(function () {
         removeAsteroid();
       }, 6000)
-    }, 1 * 1000);
+    }, 250);
   };
 
   // Bolt
@@ -181,8 +181,8 @@ class Game {
       if (bolt.isCollidedWith(asteroid)) {
         console.log("COLLISION!!!!");
         asteroid.hit = true;
-        if (energy.energyTop < 675) energy.energyTop += 1;
-        if (energy.energyLevel > 0) energy.energyLevel -= 1;
+        if (energy.energyTop < 675) energy.energyTop += 5;
+        if (energy.energyLevel > 0) energy.energyLevel -= 5;
       }
     }
   }
