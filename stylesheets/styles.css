@@ -48,11 +48,13 @@ body {
 .body-top * button:hover {
   box-shadow: 0px 0px 10px 10px rgb(30, 255, 30);
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .body-top * a:hover {
   box-shadow: 0px 0px 10px 10px rgb(30, 255, 30);
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .buttons > button {
@@ -71,4 +73,59 @@ body {
 .links {
   display: flex;
   flex-direction: column;
+}
+
+#directions-modal {
+  display: none;
+  position: absolute;
+  width: 70%;
+  height: 65%;
+}
+
+.directions-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 75%;
+  border: 2px solid grey;
+  border-radius: 10px;
+  background-color: black;
+  padding: 70px;
+}
+
+.directions-page > h1 {
+  font-size: 80px;
+  font-family: 'Faster One';
+  color: rgb(212, 41, 255);
+  margin-bottom: 50px;
+}
+
+.directions-page > h2 {
+  font-family: 'Audiowide';
+  color: rgb(212, 41, 255);
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.directions-page > p {
+  font-family: 'Audiowide';
+  color: rgb(9, 255, 0);
+  line-height: 2;
+}
+
+#close-modal {
+  font-family: 'Audiowide';
+  color: rgb(212, 41, 255);
+  font-size: 20px;
+  border: 2px solid grey;
+  border-radius: 4px;
+  background-color: black;
+  margin: 30px;
+}
+
+#close-modal:hover {
+  box-shadow: 0px 0px 10px 10px rgb(30, 255, 30);
+  transform: scale(1.1);
+  cursor: pointer;
 }

@@ -5,6 +5,8 @@
     <script type="application/javascript" src="./dist/main.js"></script>
     <link rel="stylesheet" type="text/css" href="./stylesheets/reset.css" />
     <link rel="stylesheet" type="text/css" href="./stylesheets/styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Faster One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
   </head>
   
   <body>
@@ -23,7 +25,7 @@
             class="play"
           >
         </button>
-        <button class="directions-btn">
+        <button id="directions-btn">
           <img 
             src="assets/images/text/directions.png" 
             alt="directions" 
@@ -60,7 +62,27 @@
       <canvas class="game-canvas"></canvas>
       <canvas class="energy-bar"></canvas>
     </div>
-    
+    <div id="directions-modal">
+      <div class="directions-page">
+        <h1>William Tell Overdrive</h1>
+        <p>
+          You are a descendent of the Swiss folk hero William Tell in the year 2420,
+          and have been traveling the galaxy hunting Space Tyrants. You have just 
+          been sent word that the evil Celestial Reich has sent their newest super
+          weapon, the Murder Moon, to destroy Earth. You only have one chance to
+          save Earth: you must fire a Starbolt from your Cosmic Crossbow and blast 
+          the Murder Moon apart. You are going to need perfect aim.
+        </p>
+        <h2>Directions</h2>
+        <p>Use the LEFT and RIGHT arrows on your keyboard to steer the Starbolt.
+          The bar on the left is your kinetic energy. You must hit the Murder Moon
+          with enough kinetic energy to destroy it. Hitting asteroids will reduce
+          your energy. Hitting planets, depleting your kinetic energy, or missing 
+          the Murder Moon will seal Earth's fate, and doom it to destruction!
+        </p>
+        <button id="close-modal">Close</button>
+      </div>
+    </div>
   </body>
 
 </html>
