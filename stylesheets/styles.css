@@ -3,6 +3,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }
 
 .page-bg {
@@ -61,13 +62,24 @@ body {
   margin-right: 20px;
 }
 
+/* .audio {
+  display: flex;
+} */
+
 #audio-btn {
-  padding: 5px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
   height: 50px;
 }
 
 #audio-btn > img {
   height: 30px;
+}
+
+#mute-symbol {
+  font-size: 40px;
+  margin-left: 2%;
 }
 
 .links {
