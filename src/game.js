@@ -1,5 +1,6 @@
 import Planet from './planet.js';
 import Asteroid from './asteroid.js';
+import Star from './star';
 import Bolt from './bolt.js';
 import Earth from './earth.js';
 import MurderMoon from './murder_moon';
@@ -16,6 +17,7 @@ class Game {
   constructor(ctx, eBar) {
     this.ctx = ctx;
     this.eBar = eBar;
+    this.stars = [];
     this.planets = [];
     this.asteroids = [];
     this.earth = new Earth(ctx);
@@ -32,6 +34,38 @@ class Game {
     this.bar_x = 75;
     this.bar_y = 700;
   }
+
+  // Stars
+
+  addStar() {
+    const positions = ["pos1", "pos2"]
+    const pos = positions[Math.floor(Math.random() * Math.floor(2))];
+    this.stars.push(new Star(this.ctx, pos));
+  }
+
+  removeStar() {
+    this.stars.shift();
+  }
+
+  drawStars() {
+    this.stars.forEach(star => {
+      star.draw();
+    });
+  }
+
+  generateStars() {
+
+    const addStar = this.addStar.bind(this);
+    const removeStar = this.removeStar.bind(this);
+    this.starIntervalId = setInterval(function () {
+
+      addStar();
+
+      setTimeout(function () {
+        removeStar();
+      }, 10 * 1000)
+    }, 800);
+  };
 
   // Planets
 
@@ -54,12 +88,10 @@ class Game {
     const planet = planets[Math.floor(Math.random() * Math.floor(12))]
     const pos = positions[Math.floor(Math.random() * Math.floor(5))];
     this.planets.push(new Planet(this.ctx, planet, pos));
-    console.log(this.planets);
   }
 
   removePlanet() {
     this.planets.shift();
-    console.log(this.planets);
   }
 
   drawPlanets() {
@@ -147,6 +179,31 @@ class Game {
 
   // Collisions
 
+  checkStarCollisions() {
+    const bolt = this.bolt;
+    const stars = this.stars;
+    const loseConditionOne = this.loseConditionOne.bind(this);
+
+    for (let i = 0; i < stars.length; i++) {
+      const star = stars[i]
+
+      if (bolt.isCollidedWith(star)) {
+        console.log("COLLISION!!!!");
+        star.hit = true;
+        bolt.hit = true;
+        clearInterval(this.starIntervalId);
+        clearInterval(this.planetIntervalId);
+        clearInterval(this.asteroidIntervalId);
+        this.stars = [star];
+        this.planets = [];
+        this.asteroids = [];
+        setTimeout(function () {
+          loseConditionOne();
+        }, 3000)
+      }
+    }
+  }
+
   checkPlanetCollisions() {
     const bolt = this.bolt;
     const planets = this.planets;
@@ -162,6 +219,7 @@ class Game {
         clearInterval(this.planetIntervalId);
         clearInterval(this.asteroidIntervalId);
         this.planets = [planet];
+        this.stars = [];
         this.asteroids = [];
         setTimeout(function () {
           loseConditionOne();
@@ -227,6 +285,7 @@ class Game {
   // Animation
 
   stopObjects() {
+    clearInterval(this.starIntervalId);
     clearInterval(this.planetIntervalId);
     clearInterval(this.asteroidIntervalId);
   }
@@ -240,6 +299,7 @@ class Game {
     eBar.fillStyle = this.bg_color;
     eBar.fillRect(0, 0, this.bar_x, this.bar_y)
     this.energy.draw();
+    this.drawStars();
     this.drawPlanets();
     this.drawAsteroids();
 
@@ -285,6 +345,13 @@ class Game {
       }
     });
 
+    this.stars.forEach(star => {
+      if (star) {
+        star.move();
+      }
+    });
+
+    this.checkStarCollisions();
     this.checkPlanetCollisions();
     this.checkAsteroidCollisions();
     if (this.gameStatus === "ending") {

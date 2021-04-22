@@ -12,6 +12,14 @@ class Star {
     this.explosion = explosion;
     this.explosionSize = 100; // Change
     this.star = star;
+
+    if (this.startPos === "pos1") this.pos = [390, 50];
+    if (this.startPos === "pos2") this.pos = [490, 50];
+
+    this.centerPos = [
+      (this.pos[0] + (this.size / 2)),
+      (this.pos[1] + (this.size / 2))
+    ];
   }
 
   draw() {

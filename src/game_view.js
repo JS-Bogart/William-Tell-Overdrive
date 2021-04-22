@@ -6,6 +6,7 @@ class GameView {
   }
 
   generateObjects() {
+    this.game.generateStars(this.ctx);
     this.game.generatePlanets(this.ctx);
     this.game.generateAsteroids(this.ctx);
   }
