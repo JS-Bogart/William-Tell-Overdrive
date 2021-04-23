@@ -51,12 +51,6 @@ class Planet {
     if (this.startPos === "pos2") this.pos = [590, 50];
     if (this.startPos === "pos3") this.pos = [690, 50];
 
-    // if (this.startPos === "pos1") this.pos = [390, 50];
-    // if (this.startPos === "pos2") this.pos = [490, 50];
-    // if (this.startPos === "pos3") this.pos = [590, 50];
-    // if (this.startPos === "pos4") this.pos = [690, 50];
-    // if (this.startPos === "pos5") this.pos = [790, 50];
-
     this.centerPos = [
       (this.pos[0] + (this.size / 2)), 
       (this.pos[1] + (this.size / 2))
@@ -124,18 +118,6 @@ class Planet {
       } else if (this.startPos === "pos3") {
         this.pos[0] += 0.4;
       }
-
-      // if (this.startPos === "pos1") {
-      //   this.pos[0] -= 3.0;
-      // } else if (this.startPos === "pos2") {
-      //   this.pos[0] -= 1.7;
-      // } else if (this.startPos === "pos3") {
-      //   this.pos[0] -= 0.55;
-      // } else if (this.startPos === "pos4") {
-      //   this.pos[0] += 0.4;
-      // } else if (this.startPos === "pos5") {
-      //   this.pos[0] += 1.75;
-      // }
   
       this.centerPos = [
         (this.pos[0] + (this.size / 3)),
