@@ -110,19 +110,19 @@ class Planet {
       this.pos[0] -= 5;
       this.pos[1] -= 5;
     } else {
-      this.size += 0.9;
-      this.pos[1] += 3;
+      this.size += 1.2;
+      this.pos[1] += 4.5;
   
       if (this.startPos === "pos1") {
-        this.pos[0] -= 2.0;
+        this.pos[0] -= 3.0;
       } else if (this.startPos === "pos2") {
-        this.pos[0] -= 1.2;
+        this.pos[0] -= 1.7;
       } else if (this.startPos === "pos3") {
-        this.pos[0] -= 0.45;
+        this.pos[0] -= 0.55;
       } else if (this.startPos === "pos4") {
-        this.pos[0] += 0.3;
+        this.pos[0] += 0.4;
       } else if (this.startPos === "pos5") {
-        this.pos[0] += 1.2;
+        this.pos[0] += 1.75;
       }
   
       this.centerPos = [

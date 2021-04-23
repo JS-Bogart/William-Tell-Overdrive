@@ -63,7 +63,7 @@ class Game {
 
       setTimeout(function () {
         removeStar();
-      }, 10 * 1000)
+      }, 15 * 1000)
     }, 2000);
   };
 
@@ -110,7 +110,7 @@ class Game {
 
       setTimeout(function () {
         removePlanet();
-      }, 10 * 1000)
+      }, 15 * 1000)
     }, 800);
   };
 
