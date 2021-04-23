@@ -338,7 +338,6 @@ class Game {
   };
 
   step() {
-    console.log(this.gameStatus)
     this.bolt.move();
 
     this.asteroids.forEach(asteroid => {
