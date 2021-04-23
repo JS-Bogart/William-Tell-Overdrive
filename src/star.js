@@ -7,10 +7,10 @@ class Star {
   constructor(ctx, startPos) {
     this.ctx = ctx;
     this.startPos = startPos;
-    this.size = 10; // Change
+    this.size = 10;
     this.hit = false;
     this.explosion = explosion;
-    this.explosionSize = 100; // Change
+    this.explosionSize = 100;
     this.star = star;
 
     if (this.startPos === "pos1") this.pos = [390, 50];
