@@ -130,12 +130,10 @@ class Game {
     const asteroid = asteroids[Math.floor(Math.random() * Math.floor(7))]
     const pos = positions[Math.floor(Math.random() * Math.floor(4))];
     this.asteroids.push(new Asteroid(this.ctx, asteroid, pos));
-    console.log(this.asteroids);
   }
 
   removeAsteroid() {
     this.asteroids.shift();
-    console.log(this.asteroids);
   }
 
   drawAsteroids() {
@@ -188,7 +186,6 @@ class Game {
       const star = stars[i]
 
       if (bolt.isCollidedWith(star)) {
-        console.log("COLLISION!!!!");
         star.hit = true;
         bolt.hit = true;
         clearInterval(this.starIntervalId);
@@ -213,7 +210,6 @@ class Game {
       const planet = planets[i]
 
       if (bolt.isCollidedWith(planet)) {
-        console.log("COLLISION!!!!");
         planet.hit = true;
         bolt.hit = true;
         clearInterval(this.starIntervalId);
@@ -238,7 +234,6 @@ class Game {
       const asteroid = asteroids[i]
 
       if (bolt.isCollidedWith(asteroid)) {
-        console.log("COLLISION!!!!");
         asteroid.hit = true;
         if (energy.energyTop < 675) energy.energyTop += 5;
         if (energy.energyLevel > 0) energy.energyLevel -= 5;
@@ -252,7 +247,6 @@ class Game {
     const loseConditionTwo = this.loseConditionTwo.bind(this);
 
     if (bolt.isCollidedWith(earth)) {
-      console.log("COLLISION!!!!");
       earth.hit = true;
       bolt.hit = true;
       setTimeout(function () {
@@ -269,7 +263,6 @@ class Game {
     const loseConditionOne = this.loseConditionOne.bind(this);
 
     if (bolt.isCollidedWith(murderMoon)) {
-      console.log("COLLISION!!!!");
       bolt.hit = true;
       if (energy.energyLevel > 0) {
         murderMoon.hit = true;
