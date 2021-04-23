@@ -266,6 +266,7 @@ class Game {
     const energy = this.energy;
     const murderMoon = this.murderMoon;
     const winCondition = this.winCondition.bind(this);
+    const loseConditionOne = this.loseConditionOne.bind(this);
 
     if (bolt.isCollidedWith(murderMoon)) {
       console.log("COLLISION!!!!");
@@ -280,6 +281,18 @@ class Game {
           loseConditionOne();
         }, 3000)
       }
+    }
+  }
+
+  checkEnergyLevel() {
+    const energy = this.energy;
+    const loseConditionOne = this.loseConditionOne.bind(this);
+
+    if (energy.energyLevel < 1) {
+      this.stopObjects();
+      setTimeout(function () {
+        loseConditionOne();
+      }, 3000)
     }
   }
 
@@ -352,6 +365,7 @@ class Game {
       }
     });
 
+    this.checkEnergyLevel();
     this.checkStarCollisions();
     this.checkPlanetCollisions();
     this.checkAsteroidCollisions();
