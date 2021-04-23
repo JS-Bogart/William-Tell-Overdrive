@@ -26,6 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
   close.addEventListener("click", () => {
     directions.style.display = "none";
   });
+
+  document.getElementById("audio-btn").addEventListener("click", () => {
+    if (wto.muted) {
+      wto.muted = false;
+      mute.innerHTML = "&#x1f50a;"
+    } else {
+      wto.muted = true;
+      mute.innerHTML = "&#x1f507;"
+    }
+  });
   
   document.getElementById("play-btn").addEventListener("click", () => {
     
@@ -34,16 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     wto.currentTime = 0;
     wto.play();
-
-    document.getElementById("audio-btn").addEventListener("click", () => {
-      if (wto.muted) {
-        wto.muted = false;
-        mute.innerHTML = "&#x1f50a;"
-      } else {
-        wto.muted = true;
-        mute.innerHTML = "&#x1f507;"
-      }
-    });
 
     let moveLeft = false;
     let moveRight = false;

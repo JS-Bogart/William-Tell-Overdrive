@@ -13,7 +13,7 @@ class Bolt {
     this.speed = 5;
     this.moveLeft = false;
     this.moveRight = false;
-    this.radius = 10;
+    this.radius = 5;
     this.centerPos = [573.5, 580];
     this.crossbow = crossbow;
     this.crossbowStatus = "loaded";
@@ -66,7 +66,7 @@ class Bolt {
 
   isCollidedWith(otherObject) {
     const centerDist = this.dist(this.centerPos, (otherObject.centerPos));
-    return centerDist < (this.radius + (otherObject.size/2*0.9));
+    return centerDist < (this.radius + (otherObject.size/2*0.8));
   };
 
 }
