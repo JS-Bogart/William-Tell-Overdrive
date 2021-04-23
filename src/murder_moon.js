@@ -46,7 +46,6 @@ class MurderMoon {
       this.pos[1] += 2;
       if (this.endPos === "endPos1") this.pos[0] += 0.3;
       if (this.endPos === "endPos2") this.pos[0] -= 1.2;
-      // this.pos[0] += 0.3;
 
       this.centerPos = [
         (this.pos[0] + (this.size / 3)),

@@ -20,8 +20,10 @@ class GameView {
   }
 
   finalPhase() {
-    this.game.stopObjects();
-    this.game.gameStatus = "ending";
+    if (this.gameStatus === "playing") {
+      this.game.stopObjects();
+      this.game.gameStatus = "ending";
+    }
   }
 
   checkMiss() {
