@@ -26,10 +26,6 @@ body {
   margin-bottom: 20px;
 }
 
-.body-top * img {
-  height: 50px;
-}
-
 .body-top * button {
   background-color: black;
   border-radius: 4px;
@@ -40,7 +36,6 @@ body {
 .body-top * a {
   background-color: black;
   border-radius: 4px;
-  margin-top: 20px;
   border: 2px solid grey;
   text-align: center;
   padding: 2px;
@@ -62,24 +57,10 @@ body {
   margin-right: 20px;
 }
 
-/* .audio {
-  display: flex;
-} */
-
 #audio-btn {
   display: flex;
   align-items: center;
   padding: 8px;
-  height: 50px;
-}
-
-#audio-btn > img {
-  height: 30px;
-}
-
-#mute-symbol {
-  font-size: 40px;
-  margin-left: 2%;
 }
 
 .links {
@@ -91,7 +72,6 @@ body {
   display: none;
   position: absolute;
   width: 70%;
-  height: 65%;
 }
 
 .directions-page {
@@ -99,24 +79,19 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 75%;
   border: 2px solid grey;
   border-radius: 10px;
   background-color: black;
-  padding: 70px;
 }
 
 .directions-page > h1 {
-  font-size: 80px;
   font-family: 'Faster One';
   color: rgb(212, 41, 255);
-  margin-bottom: 50px;
 }
 
 .directions-page > h2 {
   font-family: 'Audiowide';
   color: rgb(212, 41, 255);
-  font-size: 60px;
   margin-bottom: 20px;
 }
 
@@ -133,11 +108,105 @@ body {
   border: 2px solid grey;
   border-radius: 4px;
   background-color: black;
-  margin: 30px;
 }
 
 #close-modal:hover {
   box-shadow: 0px 0px 10px 10px rgb(30, 255, 30);
   transform: scale(1.1);
   cursor: pointer;
+}
+
+@media screen and (min-height: 1000px) {
+  .body-top * img {
+    height: 50px;
+  }
+
+  .body-top * a {
+    margin-top: 20px;
+  }
+
+  #audio-btn {
+    height: 50px;
+  }
+
+  #audio-btn > img {
+    height: 30px;
+  }
+
+  #mute-symbol {
+    font-size: 40px;
+    margin-left: 2%;
+  }
+
+  #directions-modal {
+    height: 65%;
+  }
+
+  .directions-page {
+    height: 75%;
+    padding: 70px;
+  }
+
+  .directions-page > h1 {
+    font-size: 80px;
+    margin-bottom: 50px;
+  }
+
+  .directions-page > h2 {
+    font-size: 60px;
+  }
+
+  #close-modal {
+    margin: 30px;
+  }
+}
+
+@media screen and (max-height: 999px) {
+  .buttons * img {
+    height: 40px;
+  }
+
+  .links * img {
+    height: 30px;
+  }
+
+  .body-top * a {
+    margin-top: 10px;
+  }
+
+  #audio-btn {
+    height: 40px;
+  }
+
+  #audio-btn > img {
+    height: 25px;
+  }
+
+  #mute-symbol {
+    font-size: 30px;
+    margin-left: 3%;
+  }
+
+  #directions-modal {
+    height: 73%;
+  }
+
+  .directions-page {
+    height: 90%;
+    padding: 50px;
+  }
+
+  .directions-page > h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+  }
+
+  .directions-page > h2 {
+    font-size: 50px;
+    margin-top: 20px;
+  }
+
+  #close-modal {
+    margin: 40px;
+  }
 }
