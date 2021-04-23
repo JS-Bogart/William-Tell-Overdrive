@@ -84,9 +84,9 @@ class Game {
       "planet11",
       "planet12"
     ];
-    const positions = ["pos1", "pos2", "pos3", "pos4", "pos5"];
+    const positions = ["pos1", "pos2", "pos3"];
     const planet = planets[Math.floor(Math.random() * Math.floor(12))]
-    const pos = positions[Math.floor(Math.random() * Math.floor(5))];
+    const pos = positions[Math.floor(Math.random() * Math.floor(3))];
     this.planets.push(new Planet(this.ctx, planet, pos));
   }
 

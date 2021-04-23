@@ -47,11 +47,15 @@ class Planet {
     if (this.type === "planet11") this.planet = planet11;
     if (this.type === "planet12") this.planet = planet12;
 
-    if (this.startPos === "pos1") this.pos = [390, 50];
-    if (this.startPos === "pos2") this.pos = [490, 50];
-    if (this.startPos === "pos3") this.pos = [590, 50];
-    if (this.startPos === "pos4") this.pos = [690, 50];
-    if (this.startPos === "pos5") this.pos = [790, 50];
+    if (this.startPos === "pos1") this.pos = [490, 50];
+    if (this.startPos === "pos2") this.pos = [590, 50];
+    if (this.startPos === "pos3") this.pos = [690, 50];
+
+    // if (this.startPos === "pos1") this.pos = [390, 50];
+    // if (this.startPos === "pos2") this.pos = [490, 50];
+    // if (this.startPos === "pos3") this.pos = [590, 50];
+    // if (this.startPos === "pos4") this.pos = [690, 50];
+    // if (this.startPos === "pos5") this.pos = [790, 50];
 
     this.centerPos = [
       (this.pos[0] + (this.size / 2)), 
@@ -114,16 +118,24 @@ class Planet {
       this.pos[1] += 4.5;
   
       if (this.startPos === "pos1") {
-        this.pos[0] -= 3.0;
-      } else if (this.startPos === "pos2") {
         this.pos[0] -= 1.7;
-      } else if (this.startPos === "pos3") {
+      } else if (this.startPos === "pos2") {
         this.pos[0] -= 0.55;
-      } else if (this.startPos === "pos4") {
+      } else if (this.startPos === "pos3") {
         this.pos[0] += 0.4;
-      } else if (this.startPos === "pos5") {
-        this.pos[0] += 1.75;
       }
+
+      // if (this.startPos === "pos1") {
+      //   this.pos[0] -= 3.0;
+      // } else if (this.startPos === "pos2") {
+      //   this.pos[0] -= 1.7;
+      // } else if (this.startPos === "pos3") {
+      //   this.pos[0] -= 0.55;
+      // } else if (this.startPos === "pos4") {
+      //   this.pos[0] += 0.4;
+      // } else if (this.startPos === "pos5") {
+      //   this.pos[0] += 1.75;
+      // }
   
       this.centerPos = [
         (this.pos[0] + (this.size / 3)),
