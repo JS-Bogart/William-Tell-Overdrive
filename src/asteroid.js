@@ -102,8 +102,8 @@ class Asteroid {
 
   move() {
     if (this.hit) {
-      this.explosionSize += 4;
-      this.pos[1] += 3;
+      this.explosionSize += 6;
+      this.pos[1] += 7;
 
       if (this.startPos === "pos1") {
         this.pos[0] -= 1.0;
@@ -115,17 +115,17 @@ class Asteroid {
         this.pos[0] += 1.0;
       }
     } else {
-      this.size += 0.3;
-      this.pos[1] += 3;
+      this.size += 0.7;
+      this.pos[1] += 7;
   
       if (this.startPos === "pos1") {
-        this.pos[0] -= 1.0;
+        this.pos[0] -= 2.4;
       } else if (this.startPos === "pos2") {
-        this.pos[0] -= 0.3;
+        this.pos[0] -= 0.6;
       } else if (this.startPos === "pos3") {
-        this.pos[0] += 0.3;
+        this.pos[0] += 0.8;
       } else if (this.startPos === "pos4") {
-        this.pos[0] += 1.0;
+        this.pos[0] += 2.4;
       }
   
       this.centerPos = [
