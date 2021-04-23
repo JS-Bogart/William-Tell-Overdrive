@@ -64,7 +64,7 @@ class Game {
       setTimeout(function () {
         removeStar();
       }, 10 * 1000)
-    }, 800);
+    }, 2000);
   };
 
   // Planets
@@ -216,6 +216,7 @@ class Game {
         console.log("COLLISION!!!!");
         planet.hit = true;
         bolt.hit = true;
+        clearInterval(this.starIntervalId);
         clearInterval(this.planetIntervalId);
         clearInterval(this.asteroidIntervalId);
         this.planets = [planet];

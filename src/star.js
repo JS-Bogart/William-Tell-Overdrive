@@ -7,14 +7,14 @@ class Star {
   constructor(ctx, startPos) {
     this.ctx = ctx;
     this.startPos = startPos;
-    this.size = 5; // Change
+    this.size = 10; // Change
     this.hit = false;
     this.explosion = explosion;
     this.explosionSize = 100; // Change
     this.star = star;
 
     if (this.startPos === "pos1") this.pos = [390, 50];
-    if (this.startPos === "pos2") this.pos = [490, 50];
+    if (this.startPos === "pos2") this.pos = [790, 50];
 
     this.centerPos = [
       (this.pos[0] + (this.size / 2)),
@@ -26,8 +26,8 @@ class Star {
     if (this.hit) {
       this.ctx.drawImage(
         this.explosion,
-        this.pos[0] + 10,
-        this.pos[1] + 30,
+        this.pos[0] + 90,
+        this.pos[1] + 120,
         this.explosionSize,
         this.explosionSize
       );
@@ -47,7 +47,7 @@ class Star {
       this.ctx.arc(
         (this.pos[0] + (this.size / 2)),
         (this.pos[1] + (this.size / 2)),
-        (this.size / 2) * 1.3,
+        (this.size / 2) * 1.0,
         0,
         2 * Math.PI
       );
@@ -73,13 +73,13 @@ class Star {
       this.pos[0] -= 5;
       this.pos[1] -= 5;
     } else {
-      this.size += 0.9;
+      this.size += 3;
       this.pos[1] += 3;
 
       if (this.startPos === "pos1") {
-        this.pos[0] -= 2.0;
+        this.pos[0] -= 3.6;
       } else if (this.startPos === "pos2") {
-        this.pos[0] -= 1.2;
+        this.pos[0] += 0.8;
       }
 
       this.centerPos = [
