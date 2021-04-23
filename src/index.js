@@ -18,9 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const close = document.getElementById("close-modal");
   const mute = document.getElementById("mute-symbol");
 
-
   directionsBtn.addEventListener("click", () => {
-    directions.style.display = "block";
+    if (directions.style.display !== "block") {
+      directions.style.display = "block";
+    } else {
+      directions.style.display = "none";
+    }
   });
 
   close.addEventListener("click", () => {
