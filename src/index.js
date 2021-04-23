@@ -41,8 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
   document.getElementById("play-btn").addEventListener("click", () => {
+
+    const endPositions = ["endPos1", "endPos2"]
+    const endPos = endPositions[Math.floor(Math.random() * Math.floor(2))];
     
-    const game = new Game(ctx, eBar);
+    const game = new Game(ctx, eBar, endPos);
     new GameView(game, ctx, eBar).start();
 
     wto.currentTime = 0;

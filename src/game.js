@@ -14,14 +14,14 @@ const lose = new Image();
 lose.src = "assets/images/text/lose.png"
 
 class Game {
-  constructor(ctx, eBar) {
+  constructor(ctx, eBar, endPos) {
     this.ctx = ctx;
     this.eBar = eBar;
     this.stars = [];
     this.planets = [];
     this.asteroids = [];
-    this.earth = new Earth(ctx);
-    this.murderMoon = new MurderMoon(ctx);
+    this.earth = new Earth(ctx, endPos);
+    this.murderMoon = new MurderMoon(ctx, endPos);
     this.bolt = new Bolt(ctx);
     this.energy = new Energy(eBar);
     this.bg_color = "#000000";

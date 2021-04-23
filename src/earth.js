@@ -4,14 +4,16 @@ const explosion = new Image();
 explosion.src = "assets/images/explosions/planet_explosion.png";
 
 class Earth {
-  constructor(ctx){
+  constructor(ctx, endPos){
     this.ctx = ctx;
-    this.pos = [490, 50];
+    this.endPos = endPos;
     this.size = 5;
     this.hit = false;
     this.explosion = explosion;
     this.explosionSize = 100;
     this.earth = earth;
+    if (this.endPos === "endPos1") this.pos = [490, 50];
+    if (this.endPos === "endPos2") this.pos = [690, 50];
   }
 
   draw() {
@@ -42,7 +44,9 @@ class Earth {
     } else {
       this.size += 1.0;
       this.pos[1] += 2;
-      this.pos[0] -= 1.2;
+      if (this.endPos === "endPos1") this.pos[0] -= 1.2;
+      if (this.endPos === "endPos2") this.pos[0] += 0.3;
+      // this.pos[0] -= 1.2;
 
       this.centerPos = [
         (this.pos[0] + (this.size / 3)),
