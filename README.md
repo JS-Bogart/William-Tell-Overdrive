@@ -12,9 +12,15 @@ The welcome screen features several clickable buttons. The New Game button begin
 ![alt text](https://github.com/JS-Bogart/William-Tell-Overdrive/blob/main/assets/images/readme/welcome_screen.png?raw=true)
 
 ### Directions
-
+The directions modal contains the game's backstory as well as the controls used to play the game.
+![alt text](https://github.com/JS-Bogart/William-Tell-Overdrive/blob/main/assets/images/readme/directions.png?raw=true)
 
 ### Gameplay
+The gameplay revolves around steering a plasma bolt through space. The player must dodge incoming asteroids, planets, and stars. There is a kinetic energy bar on the right that goes down every time an asteroid is hit. 
+![alt text](https://github.com/JS-Bogart/William-Tell-Overdrive/blob/main/assets/images/readme/gameplay.png?raw=true)
+
+If the player makes it to the end of the game (which coincides with the end of the William Tell Overture), they must hit planet-like space station that is threatening Earth in order to win.
+![alt text](https://github.com/JS-Bogart/William-Tell-Overdrive/blob/main/assets/images/readme/ending.png?raw=true)
 
 
 ## Featured Code:
