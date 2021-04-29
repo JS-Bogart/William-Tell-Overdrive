@@ -8,6 +8,7 @@ The live working demo can be found here: [https://js-bogart.github.io/William-Te
 
 ## Site:
 ### Welcome Screen
+The welcome screen features several clickable buttons. The New Game button begins gameplay, the directions button brings up the directions modal, and the audio button mutes/un mutes the music played during the game.
 
 
 ### Directions
